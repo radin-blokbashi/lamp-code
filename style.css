@@ -1,0 +1,72 @@
+:root {
+  --bg-color: #121417;
+  --lamp-matte: #e8e2d9;
+  --lamp-shade: #f5f0e6;
+  --lamp-base: #d1ccc2;
+  --glow-color: rgba(255, 214, 110, 0.3);
+  --accent-color: #d4a373;
+  --on: 0;
+  --transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg-color);
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  overflow: hidden;
+  transition: background var(--transition);
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 40%,
+    var(--glow-color),
+    transparent 70%
+  );
+  opacity: var(--on);
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+/* added: styles so the lamp is visible */
+.lamp-svg {
+  width: 200px;
+  height: 300px;
+  overflow: visible;
+}
+.lamp-base {
+  fill: var(--lamp-base);
+}
+.lamp-shade {
+  fill: var(--lamp-shade);
+}
+.inner-glow {
+  fill: var(--glow-color);
+  opacity: var(--on);
+  transition: opacity var(--transition);
+}
+.cord-line {
+  stroke: var(--accent-color);
+  stroke-width: 2;
+}
+.cord-bead {
+  fill: var(--accent-color);
+}
+.cord-hit {
+  cursor: grab;
+}
